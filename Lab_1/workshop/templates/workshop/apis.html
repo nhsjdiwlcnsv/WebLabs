@@ -1,0 +1,16 @@
+{% extends 'workshop/base.html' %}
+
+{% block content %}
+    <h1>APIs page</h1>
+    <div>
+        {% if request.user.is_authenticated %}
+            <a class="btn btn-primary" href="https://www.foaas.com/{{ fuck_engine }}/{{ request.user.username }}">Fuck off</a>
+        {% else %}
+            <a class="btn btn-primary disabled" href="https://www.foaas.com/{{ fuck_engine }}/{{ request.user.username }}">Fuck off</a>
+        {% endif %}
+    </div>
+    <div>
+        <h3>Today's random waifu (get some help)!✨💅</h3>
+        <img src="{{ img_url }}" width="500px" alt="ahuha"/>
+    </div>
+{% endblock content%}

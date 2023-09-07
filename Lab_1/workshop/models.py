@@ -27,6 +27,7 @@ class ServiceType(models.Model):
         unique=True,
         verbose_name='URL',
     )
+    image = models.ImageField(upload_to='images/', null=True, blank=True)
 
     def __str__(self):
         return self.title
