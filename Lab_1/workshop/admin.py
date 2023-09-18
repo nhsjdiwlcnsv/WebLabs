@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import ServiceType, Service, Order, Person
+from .models import Question, ServiceType, Service, NewsPost, Order, Person
 
 
 # Register your models here.
@@ -16,7 +16,9 @@ class ServiceAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
 
 
+admin.site.register(Question)
 admin.site.register(ServiceType, ServiceTypeAdmin)
 admin.site.register(Service, ServiceAdmin)
+admin.site.register(NewsPost)
 admin.site.register(Person)
 admin.site.register(Order)

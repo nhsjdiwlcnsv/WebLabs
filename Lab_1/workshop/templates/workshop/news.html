@@ -8,10 +8,13 @@
     <div class="card" style="width: 30%; margin-top: 2em">
         <div class="card-body">
             <h5 class="card-title">{{ s.title }}</h5>
-            <p class="card-text"><a href="{{ s.service_type.get_absolute_url }}">{{ s.service_type }}</a></p>
-            <p class="card-text">{{ s.description }}</p>
-            <p class="card-text">${{ s.price }}</p>
-            <a class="btn btn-primary" href="{{ s.get_absolute_url }}">Learn more</a>
+            <a href="{{ s.slug }}">Learn more</a>
+            <hr>
+            {% if s.description %}
+                <p class="card-text">{{ s.description }}</p>
+            {% else %}
+                <p class="card-text">{{ s.content }}</p>
+            {% endif %}
         </div>
     </div>
     {% endfor %}

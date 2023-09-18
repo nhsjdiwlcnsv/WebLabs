@@ -1,6 +1,9 @@
 pages = [
-    # {"title": "Staff", "url": "staff"},
+    {"title": "About us", "url": "about"},
+    {"title": "Contact us", "url": "contact"},
+    {"title": "Glossary", "url": "glossary"},
     {"title": "Services", "url": "services"},
+    {"title": "News", "url": "news"},
     {"title": "APIs", "url": "apis"},
 ]
 

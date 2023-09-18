@@ -20,6 +20,16 @@ class Person(AbstractUser):
         return self.username
 
 
+class Question(models.Model):
+    question = models.CharField(max_length=255)
+    answer = models.TextField(null=True, blank=True, max_length=1000)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.question
+
+
 class ServiceType(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField(
@@ -63,10 +73,29 @@ class Service(models.Model):
         return reverse('service', kwargs={'service_slug': self.slug})
 
 
+class NewsPost(models.Model):
+    title = models.CharField(max_length=255)
+    slug = models.SlugField(
+        max_length=255,
+        unique=True,
+        verbose_name='URL',
+    )
+    description = models.TextField(null=True)
+    content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title
+
+    def get_absolute_url(self):
+        return reverse('news-post', kwargs={'news_post': self.slug})
+
+
 class Order(models.Model):
     service = models.ForeignKey(Service, on_delete=models.CASCADE)
     content = models.TextField(max_length=2000)
-    created_by = models.ForeignKey(Person, auto_created=True, on_delete=models.CASCADE)
+    created_by = models.ForeignKey(Person, null=True, blank=True, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

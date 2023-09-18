@@ -1,7 +1,7 @@
 {% extends 'workshop/base.html' %}
 
 {% block content %}
-    <h1>Create an order </h1>
+    <h1>Create an order</h1>
     <form method="post">
         {% csrf_token %}
         {% for field in form %}

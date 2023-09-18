@@ -1,0 +1,8 @@
+{% extends 'workshop/base.html' %}
+
+{% block content %}
+    <h1>{{ object.title }}</h1>
+    <h3>Type: {{ object.created_at }}</h3>
+    <p>{{ object.updated_at }}</p>
+    <p>{{ object.content }}</p>
+{% endblock content %}
