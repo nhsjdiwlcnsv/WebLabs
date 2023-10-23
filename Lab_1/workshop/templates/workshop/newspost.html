@@ -1,0 +1,13 @@
+{% extends 'workshop/base.html' %}
+
+{% block content %}
+    {% if object.image %}
+        <figure>
+            <img src="{{ object.image.url }}" style="height: 512px" alt="post image">
+        </figure>
+    {% endif %}
+    <h1>{{ object.title }}</h1>
+    <h3>Type: {{ object.created_at }}</h3>
+    <p>{{ object.updated_at }}</p>
+    <p>{{ object.content }}</p>
+{% endblock content %}
