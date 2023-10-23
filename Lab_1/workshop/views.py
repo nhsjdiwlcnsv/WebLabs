@@ -28,7 +28,7 @@ class HomeView(DataMixin, TemplateView):
             **super().get_context_data(**kwargs),
             **self.get_context(title="Home"),
             'text': HOME_PAGE_TEXT,
-            'latest_service': Service.objects.latest('created_at')
+            'post': NewsPost.objects.latest('created_at')
         }
 
 
@@ -91,6 +91,17 @@ class ServiceView(DataMixin, DetailView):
 class NewsView(DataMixin, ListView):
     model = NewsPost
     template_name = 'workshop/news.html'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        return {
+            **super().get_context_data(**kwargs),
+            **self.get_context(title="News")
+        }
+
+
+class NewsPostView(DataMixin, DetailView):
+    model = NewsPost
+    template_name = 'workshop/newspost.html'
     slug_url_kwarg = 'newspost_slug'
 
     def get_context_data(self, *, object_list=None, **kwargs):
@@ -100,14 +111,23 @@ class NewsView(DataMixin, ListView):
         }
 
 
-class NewsPostView(DataMixin, DetailView):
-    model = NewsPost
-    template_name = 'workshop/newspost.html'
+class PrivacyPolicyView(DataMixin, TemplateView):
+    template_name = 'workshop/privacy_policy.html'
 
     def get_context_data(self, *, object_list=None, **kwargs):
         return {
             **super().get_context_data(**kwargs),
-            **self.get_context(title="News post")
+            **self.get_context(title="Privacy policy")
+        }
+
+
+class ExperimentsView(DataMixin, TemplateView):
+    template_name = 'workshop/experiments.html'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        return {
+            **super().get_context_data(**kwargs),
+            **self.get_context(title="Experiments")
         }
 
 

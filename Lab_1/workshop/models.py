@@ -82,6 +82,7 @@ class NewsPost(models.Model):
     )
     description = models.TextField(null=True)
     content = models.TextField()
+    image = models.ImageField(upload_to='images/', null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -89,7 +90,7 @@ class NewsPost(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('news-post', kwargs={'news_post': self.slug})
+        return reverse('news-post', kwargs={'newspost_slug': self.slug})
 
 
 class Order(models.Model):

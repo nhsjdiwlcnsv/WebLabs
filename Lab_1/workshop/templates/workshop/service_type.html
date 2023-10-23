@@ -2,7 +2,7 @@
 
 {% block content %}
     {% if image %}
-        <img src="{{ image.url }}" style="height: 500px">
+        <img src="{{ image.url }}" alt="{{ s.title }} image" style="height: 500px">
     {% endif %}
     <h1>{{ service_type.title }}</h1>
     {% for s in object_list %}
