@@ -1,55 +1,66 @@
 {% extends 'workshop/base.html' %}
 
+{% block styles %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'workshop/css/index.css' %}">
+{% endblock styles %}
+
 {% block content %}
-    <h1>Home page</h1>
-    <div>
-        <blockquote>
-            Fashion is not necessarily about labels. It's not about brands. It's about something else that comes from within you.
-            <cite>– Ralph Lauren</cite>
-        </blockquote>
-        <blockquote>
-            Clothes aren't going to change the world, the women who wear them will.
-            <cite>– Anne Klein</cite>
-        </blockquote>
-    </div>
-    <div>
-        <img
-            src="https://mir-s3-cdn-cf.behance.net/project_modules/max_3840/7f3ffe86736007.5da2fd566315c.jpg"
-            alt="skylar"
-        />
-        <p>{{ text }}</p>
-    </div>
-    <div>
-        <h2>Latest news post</h2>
-        <div>
-        <div>
-            <h5>{{ post.title }}</h5>
-            <a href="news/{{ post.slug }}">Learn more</a>
-            <hr>
-            {% if post.description %}
-                <p>{{ post.description }}</p>
-            {% else %}
-                <p>{{ post.content }}</p>
-            {% endif %}
+    <div class="index-container">
+        <div class="h1quotes">
+            <div class="h1container">
+                <h1 class="page-title">Home page</h1>
+            </div>
+            <div class="quotes">
+                <blockquote>
+                Fashion is not necessarily about labels. It's not about brands. It's about something else that comes from within you.
+                <cite>– Ralph Lauren</cite>
+            </blockquote>
+            <blockquote>
+                Clothes aren't going to change the world, the women who wear them will.
+                <cite>– Anne Klein</cite>
+            </blockquote>
+            </div>
         </div>
-    </div>
-    </div>
-    <div>
-        <a href="https://meta.com"><img
-            src="https://1000logos.net/wp-content/uploads/2021/10/logo-Meta.png"
-            alt="meta logo"
-        ></a>
-        <a href="https://apple.com"><img
-            src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg"
-            alt="apple logo"
-        ></a>
-        <a href="https://amazon.com"><img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Amazon_icon.svg/2500px-Amazon_icon.svg.png"
-            alt="amazon logo"
-        ></a>
-        <a href="https://google.com"><img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1200px-Google_%22G%22_Logo.svg.png"
-            alt="google logo"
-        ></a>
+        <div id="main-img-container">
+            <img
+                src="https://mir-s3-cdn-cf.behance.net/project_modules/max_3840/7f3ffe86736007.5da2fd566315c.jpg"
+                alt="skylar"
+            />
+            <p class="large-text">{{ text }}</p>
+        </div>
+        <div>
+            <h2>Latest news post</h2>
+            <div>
+            <div>
+                <h5>{{ post.title }}</h5>
+                <a href="news/{{ post.slug }}">Learn more</a>
+                <hr>
+                {% if post.description %}
+                    <p>{{ post.description }}</p>
+                {% else %}
+                    <p>{{ post.content }}</p>
+                {% endif %}
+            </div>
+        </div>
+        </div>
+        <div>
+            <a href="https://meta.com"><img
+                src="https://1000logos.net/wp-content/uploads/2021/10/logo-Meta.png"
+                alt="meta logo"
+            ></a>
+            <a href="https://apple.com"><img
+                src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg"
+                alt="apple logo"
+            ></a>
+            <a href="https://amazon.com"><img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Amazon_icon.svg/2500px-Amazon_icon.svg.png"
+                alt="amazon logo"
+            ></a>
+            <a href="https://google.com"><img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1200px-Google_%22G%22_Logo.svg.png"
+                alt="google logo"
+            ></a>
+        </div>
     </div>
 {% endblock content%}

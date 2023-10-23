@@ -1,0 +1,45 @@
+.index-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4em;
+}
+
+.h1quotes {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 2em;
+}
+
+.h1container {
+    width: 100%;
+}
+
+.h1container h1 {
+    font-size: 4em;
+}
+
+.quotes {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 4em;
+}
+
+.quotes blockquote {
+    margin: 0;
+    width: fit-content;
+}
+
+#main-img-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#main-img-container img, p {
+    width: 80%;
+}
