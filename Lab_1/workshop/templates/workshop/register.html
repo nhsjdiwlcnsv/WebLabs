@@ -2,20 +2,20 @@
 
 {% block content %}
     <h1>{{ title }}</h1>
-    <form method="post" style="width: 70%">
+    <form method="post">
         {% csrf_token %}
         {% for field in form %}
-            <div class="input-group mb-3">
+            <div>
                 {% if field.label == 'Username' %}
-                    <span class="input-group-text">@</span>
+                    <span>@</span>
                 {% endif %}
                 {{ field }}
             </div>
             <div>{{ field.errors }}</div>
         {% endfor %}
-        <div style="display: flex; flex-direction: row; align-items: baseline; justify-content: center">
-            <button type="submit" class="btn btn-primary">Sign up</button>
-            <p style="margin-left: 1em">Or if you already have an account <a href="{% url 'login' %}">Log in</a></p>
+        <div>
+            <button type="submit">Sign up</button>
+            <p>Or if you already have an account <a href="{% url 'login' %}">Log in</a></p>
         </div>
     </form>
 {% endblock content%}

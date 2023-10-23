@@ -1,22 +1,22 @@
 {% extends 'workshop/base.html' %}
 
 {% block content %}
-    <div style="width: 30%; display:flex; flex-direction: row; justify-content: center; align-items: center">
+    <div>
         <h1>{{ title }}</h1>
     </div>
     {% for s in object_list %}
-    <div class="card" style="width: 30%; margin-top: 2em">
-        <div class="card-body">
+    <div>
+        <div>
             {% if s.image %}
-                <img src="{{ s.image.url }}" style="height: 128px" alt="post image">
+                <img src="{{ s.image.url }}">
             {% endif %}
-            <h5 class="card-title">{{ s.title }}</h5>
+            <h5>{{ s.title }}</h5>
             <a href="{{ s.slug }}">Learn more</a>
             <hr>
             {% if s.description %}
-                <p class="card-text">{{ s.description }}</p>
+                <p>{{ s.description }}</p>
             {% else %}
-                <p class="card-text">{{ s.content }}</p>
+                <p>{{ s.content }}</p>
             {% endif %}
         </div>
     </div>
