@@ -7,6 +7,7 @@ html {
     font-size: 1rem;
     font-style: normal;
     line-height: 150%;
+    cursor: url(http://127.0.0.1:8000/media/images/gato.jpeg) 2 2, auto;
 }
 
 nav {
@@ -53,4 +54,17 @@ nav a:hover:before {
 
 .large-text {
     line-height: 170%;
+}
+
+h1 h2 h3 h4 h5[class~="title"] {
+    line-height: 150%;
+}
+
+.page-title {
+    font-size: 4em;
+}
+
+.section-title {
+    font-size: 3em;
+    color: #3875d7;
 }

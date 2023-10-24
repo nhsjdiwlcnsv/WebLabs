@@ -29,22 +29,19 @@
             />
             <p class="large-text">{{ text }}</p>
         </div>
-        <div>
-            <h2>Latest news post</h2>
-            <div>
-            <div>
-                <h5>{{ post.title }}</h5>
-                <a href="news/{{ post.slug }}">Learn more</a>
-                <hr>
+        <div class="latest-post">
+            <h2 class="section-title">Latest news post</h2>
+            <div class="post-content">
+                <h3 class="post-title">{{ post.title }}</h3>
                 {% if post.description %}
-                    <p>{{ post.description }}</p>
+                    <p class="large-text">{{ post.description }}</p>
                 {% else %}
-                    <p>{{ post.content }}</p>
+                    <p class="large-text">{{ post.content }}</p>
                 {% endif %}
+                <a href="news/{{ post.slug }}">Learn more</a>
             </div>
         </div>
-        </div>
-        <div>
+        <div id="sponsors">
             <a href="https://meta.com"><img
                 src="https://1000logos.net/wp-content/uploads/2021/10/logo-Meta.png"
                 alt="meta logo"

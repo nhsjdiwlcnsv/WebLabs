@@ -1,0 +1,10 @@
+.company-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2em;
+}
+
+.logo {
+    transform: skewY(60deg) skewX(-60deg) skew(60deg);
+}

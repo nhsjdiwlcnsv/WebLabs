@@ -1,23 +1,28 @@
 {% extends 'workshop/base.html' %}
 
+{% block styles %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'workshop/css/news.css' %}">
+{% endblock styles %}
+
 {% block content %}
-    <div>
-        <h1>{{ title }}</h1>
-    </div>
+    <h1 class="page-title">{{ title }}</h1>
     {% for s in object_list %}
-    <div>
-        <div>
+    <div class="news">
+        <div class="news-post">
             {% if s.image %}
-                <img src="{{ s.image.url }}">
+                <img class="news-picture" src="{{ s.image.url }}">
             {% endif %}
-            <h5>{{ s.title }}</h5>
-            <a href="{{ s.slug }}">Learn more</a>
-            <hr>
-            {% if s.description %}
-                <p>{{ s.description }}</p>
-            {% else %}
-                <p>{{ s.content }}</p>
-            {% endif %}
+            <div>
+                <h3>{{ s.title }}</h3>
+                <a href="{{ s.slug }}">Learn more</a>
+                <hr>
+                {% if s.description %}
+                    <p class="large-text">{{ s.description }}</p>
+                {% else %}
+                    <p class="large-text">{{ s.content }}</p>
+                {% endif %}
+            </div>
         </div>
     </div>
     {% endfor %}
