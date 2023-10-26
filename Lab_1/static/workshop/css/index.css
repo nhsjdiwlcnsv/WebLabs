@@ -30,7 +30,32 @@
     width: fit-content;
 }
 
-.quotes blockquote cite {
+.quotes blockquote::before {
+  content: "“"; /* Левая кавычка (английский) */
+  position: absolute;
+  top: 0;
+  left: -10px;
+  font-size: 24px;
+}
+
+.quotes blockquote::after {
+  content: "”"; /* Правая кавычка (английский) */
+  position: absolute;
+  bottom: -15px;
+  right: -10px;
+  font-size: 24px;
+}
+
+.quotes blockquote[lang="ru"]::before {
+  content: "«"; /* Левая кавычка (русский) */
+}
+
+.quotes blockquote[lang="ru"]::after {
+  content: "»"; /* Правая кавычка (русский) */
+}
+
+
+.quotes blockquote > cite {
     color: #3875d7;
 }
 

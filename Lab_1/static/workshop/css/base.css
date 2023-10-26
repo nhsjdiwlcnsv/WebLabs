@@ -3,7 +3,7 @@ html {
     margin: 0;
     background: #000000;
     color: #ffffff;
-    font-family: "PP Fragment Glare", sans-serif;
+    font-family: "PP Fragment Sans", sans-serif;
     font-size: 1rem;
     font-style: normal;
     line-height: 150%;
@@ -52,12 +52,16 @@ nav a:hover:before {
     flex-direction: column;
 }
 
-.large-text {
+p[class^="page"] {
     line-height: 170%;
+    text-transform: none;
+    text-decoration: none;
 }
 
-h1 h2 h3 h4 h5[class~="title"] {
+h1 h2 h3 h4 h5[class$="title"] {
     line-height: 150%;
+    text-transform: none;
+    text-decoration: none;
 }
 
 .page-title {

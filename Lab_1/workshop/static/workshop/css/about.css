@@ -5,6 +5,13 @@
     gap: 2em;
 }
 
+.company-name {
+    font-size: 4em;
+    color: #e35f5f;
+    font-family: "PP Fragment Serif", serif;
+    font-kerning: none;
+}
+
 .logo {
     transform: skewY(60deg) skewX(-60deg) skew(60deg);
 }

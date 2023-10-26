@@ -3,7 +3,7 @@ html {
     margin: 0;
     background: #000000;
     color: #ffffff;
-    font-family: "PP Fragment Glare", sans-serif;
+    font-family: "PP Fragment Sans", sans-serif;
     font-size: 1rem;
     font-style: normal;
     line-height: 150%;
@@ -25,6 +25,34 @@ nav ul {
     list-style-type: none;
 }
 
+a {
+    color: #fff;
+    transition: .5s;
+}
+
+a:link {
+    color: #00ff00;
+}
+
+a:focus {
+    background: #00363a;
+    color: #ffffff;
+}
+
+a:active {
+    transform: rotate(180deg);
+}
+
+
+a:hover {
+    font-size: 150%;
+    text-transform: uppercase;
+}
+
+a:visited {
+    color: #e35f5f;
+}
+
 nav a {
     color: #ffffff;
     text-transform: uppercase;
@@ -44,6 +72,10 @@ nav a:hover:before {
     font-size: .7rem;
 }
 
+nav a:visited {
+    color: #ffffff;
+}
+
 .content {
     margin-top: 8rem;
     padding-left: 1rem;
@@ -52,12 +84,24 @@ nav a:hover:before {
     flex-direction: column;
 }
 
-.large-text {
+p[class^="page"] {
     line-height: 170%;
+    text-transform: none;
+    text-decoration: none;
+    word-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-h1 h2 h3 h4 h5[class~="title"] {
+p[class^="page"]::first-letter {
+    font-size: 175%;
+    font-weight: bold;
+}
+
+h1 h2 h3 h4 h5[class$="title"] {
     line-height: 150%;
+    text-transform: none;
+    text-decoration: none;
 }
 
 .page-title {

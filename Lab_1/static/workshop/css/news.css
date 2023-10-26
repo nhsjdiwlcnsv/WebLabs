@@ -46,10 +46,6 @@
     cursor: none;
 }
 
-.info {
-    overflow: hidden;
-}
-
-.desc-container {
-    white-space: nowrap;
+.news-post a:clicked {
+    backdrop-filter: blur(500px);
 }

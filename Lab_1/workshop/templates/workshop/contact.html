@@ -1,7 +1,12 @@
 {% extends 'workshop/base.html' %}
 
+{% block styles %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'workshop/css/contact.css' %}">
+{% endblock styles %}
+
 {% block content %}
-    <h1>Contact us</h1>
+    <h1 class="page-title">Contact us</h1>
     <div>
         <iframe
         width="110"
@@ -19,42 +24,41 @@
             src="https://www.myinstants.com/instant/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-38020/embed/"
         ></iframe>
     </div>
-    <div
-    >
-        <div>
+    <div class="employees">
+        <div class="employee-card">
             <div>
                 <img
                     alt="MS"
                     src="https://static.wikia.nocookie.net/amogus/images/c/cb/Susremaster.png/revision/latest?cb=20210806124552"
                     width="100"
                 >
-                <h5>Mikhail Shkarubski</h5>
+                <h3>Mikhail Shkarubski</h3>
                 <p>Specializes on footwear.</p>
                 <p>+375 29 956-7008</p>
                 <p>mikhailshkarubski@gmail.com</p>
             </div>
         </div>
-        <div>
+        <div class="employee-card">
             <div>
                 <img
                     alt="AM"
                     src="https://static.wikia.nocookie.net/amogus/images/7/73/Ultimatesus.png/revision/latest?cb=20210916171704"
                     width="100"
                 >
-                <h5>Am'Oga</h5>
+                <h3>Am'Oga</h3>
                 <p>Specializes on clothes.</p>
                 <p>+375 29 708-9568</p>
                 <p>amoga@gmail.com</p>
             </div>
         </div>
-        <div>
+        <div class="employee-card">
             <div>
                 <img
                     alt="AH"
                     src="https://static.wikia.nocookie.net/amogus/images/7/73/Ultimatesus.png/revision/latest?cb=20210916171704"
                     width="100"
                 >
-                <h5>Ah'Uha</h5>
+                <h3>Ah'Uha</h3>
                 <p>Specializes on accessories/furniture.</p>
                 <p>+375 29 008-7956</p>
                 <p>ahuha@gmail.com</p>

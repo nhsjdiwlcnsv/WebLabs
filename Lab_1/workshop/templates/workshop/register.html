@@ -1,8 +1,13 @@
 {% extends 'workshop/base.html' %}
 
+{% block styles %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'workshop/css/register.css' %}">
+{% endblock styles %}
+
 {% block content %}
-    <h1>{{ title }}</h1>
-    <form method="post">
+    <h1 class="page-title">{{ title }}</h1>
+    <form method="post" class="form">
         {% csrf_token %}
         {% for field in form %}
             <div>
@@ -13,9 +18,13 @@
             </div>
             <div>{{ field.errors }}</div>
         {% endfor %}
-        <div>
+        <div class="form-button">
             <button type="submit">Sign up</button>
             <p>Or if you already have an account <a href="{% url 'login' %}">Log in</a></p>
         </div>
+        <input disabled placeholder="Disabled input example">
+        <input type="checkbox" class="checkbox">
+        <input type="radio" class="radio">
+        <input type="range" class="range">
     </form>
 {% endblock content%}

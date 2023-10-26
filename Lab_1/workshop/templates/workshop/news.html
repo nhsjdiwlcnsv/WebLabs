@@ -13,15 +13,17 @@
             {% if s.image %}
                 <img class="news-picture" src="{{ s.image.url }}">
             {% endif %}
-            <div>
+            <div class="info">
                 <h3>{{ s.title }}</h3>
                 <a href="{{ s.slug }}">Learn more</a>
                 <hr>
-                {% if s.description %}
-                    <p class="large-text">{{ s.description }}</p>
-                {% else %}
-                    <p class="large-text">{{ s.content }}</p>
-                {% endif %}
+                <div class="desc-container">
+                    {% if s.description %}
+                        <p class="page-text">{{ s.description }}</p>
+                    {% else %}
+                        <p class="page-text">{{ s.content }}</p>
+                    {% endif %}
+                </div>
             </div>
         </div>
     </div>
