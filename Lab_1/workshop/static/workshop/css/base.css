@@ -30,10 +30,6 @@ a {
     transition: .5s;
 }
 
-a:link {
-    color: #00ff00;
-}
-
 a:focus {
     background: #00363a;
     color: #ffffff;

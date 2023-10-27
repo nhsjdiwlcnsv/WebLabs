@@ -143,24 +143,22 @@
         <table>
             <thead>
                 <tr>
-                    <th id="H1" headers="Header 1">2022 revenue</th>
-                    <th id="H2" headers="Header 2">2021 revenue</th>
-                    <th id="H3" headers="Header 3">2023 revenue</th>
+                    <th style="background: red" colspan="3" style="text-align:center;">Заголовок таблицы</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td headers="H1" style="background: green"></td>
-                    <td headers="H2" style="background: yellow">128.000</td>
-                    <td headers="H3" style="background: blueviolet"></td>
+                    <td headers="H1"></td>
+                    <td headers="H2">128.000</td>
+                    <td headers="H3"></td>
                 </tr>
                 <tr>
-                    <td headers="H1" style="background: cyan">154.000</td>
-                    <td headers="H3" style="background: khaki">162.000</td>
-                    <td rowspan="2" headers="H2" style="background: darkgoldenrod">163.000</td>
+                    <td headers="H1">154.000</td>
+                    <td headers="H3">162.000</td>
+                    <td rowspan="2" headers="H2">163.000</td>
                 </tr>
                 <tr>
-                    <td colspan="2" style="background: red" headers="H2">219.000</td>
+                    <td colspan="2" headers="H2">219.000</td>
                 </tr>
             </tbody>
         </table>
@@ -245,4 +243,29 @@
         debitis saepe.
       </div>
     </article>
+    <div style="column-count: 3; column-gap: 20px;">
+      <!-- Ваш HTML-код здесь -->
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo labore
+        voluptatum fugit! Pariatur commodi illo, doloremque numquam ducimus
+        laudantium tempora, rerum laboriosam nulla quod, rem molestiae aperiam
+        possimus ipsum magni. Minima dolore facere dolores quo sed assumenda rem
+        optio dignissimos veritatis neque eum, officia perspiciatis cupiditate
+        fugiat blanditiis nostrum dicta nemo eveniet inventore quam accusantium.
+        Reprehenderit nostrum soluta corrupti sit.</p>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo labore
+        voluptatum fugit! Pariatur commodi illo, doloremque numquam ducimus
+        laudantium tempora, rerum laboriosam nulla quod, rem molestiae aperiam
+        possimus ipsum magni. Minima dolore facere dolores quo sed assumenda rem
+        optio dignissimos veritatis neque eum, officia perspiciatis cupiditate
+        fugiat blanditiis nostrum dicta nemo eveniet inventore quam accusantium.
+        Reprehenderit nostrum soluta corrupti sit.</p>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo labore
+        voluptatum fugit! Pariatur commodi illo, doloremque numquam ducimus
+        laudantium tempora, rerum laboriosam nulla quod, rem molestiae aperiam
+        possimus ipsum magni. Minima dolore facere dolores quo sed assumenda rem
+        optio dignissimos veritatis neque eum, officia perspiciatis cupiditate
+        fugiat blanditiis nostrum dicta nemo eveniet inventore quam accusantium.
+        Reprehenderit nostrum soluta corrupti sit.</p>
+
+    </div>
 {% endblock content%}

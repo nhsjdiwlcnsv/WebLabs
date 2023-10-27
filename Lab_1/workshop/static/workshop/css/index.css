@@ -63,12 +63,12 @@
 
 .quotes blockquote::before {
   content: "“"; /* Левая кавычка (английский) */
-  font-size: 24px;
+  font-size: 1.5em;
 }
 
 .quotes blockquote::after {
   content: "”"; /* Правая кавычка (английский) */
-  font-size: 24px;
+  font-size: 1.5em;
 }
 
 .quotes blockquote[lang="ru"]::before {
@@ -158,4 +158,33 @@
 
 #sponsors a > img {
     width: 4em;
+}
+
+section {
+  box-sizing: border-box;
+  border: 1px solid blue;
+  width: 100%;
+  float: left;
+}
+
+.section-div {
+    background: red;
+  margin: 5px;
+  width: 50px;
+  height: 150px;
+}
+
+.left {
+  float: left;
+  background: pink;
+}
+
+.right {
+  float: right;
+  background: cyan;
+    clear: left;
+}
+
+.link:visited {
+    color: red;!important;
 }
