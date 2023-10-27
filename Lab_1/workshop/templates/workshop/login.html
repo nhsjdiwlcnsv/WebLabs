@@ -1,17 +1,22 @@
 {% extends 'workshop/base.html' %}
 
+{% block styles %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'workshop/css/register.css' %}">
+{% endblock styles %}
+
 {% block content %}
-    <h1>{{ title }}</h1>
-    <form method="post">
+    <h1 class="page-title">{{ title }}</h1>
+    <form class="form" method="post">
         {% csrf_token %}
         {% for field in form %}
-            <div class="input-group mb-3">
+            <div>
                 {% if field.label == 'Username' %}
-                    <span class="input-group-text">@</span>
+                    <span>@</span>
                 {% endif %}
                 {{ field }}
                 {% if field.label == 'Email' %}
-                    <span class="input-group-text">@example.com</span>
+                    <span>@example.com</span>
                 {% endif %}
             </div>
             <div>
@@ -19,6 +24,6 @@
             </div>
         {% endfor %}
         <div>{{ form.non_field_errors }}</div>
-        <button type="submit" class="btn btn-primary">Log in</button>
+        <button type="submit">Log in</button>
     </form>
 {% endblock content%}

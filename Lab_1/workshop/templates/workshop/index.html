@@ -1,60 +1,89 @@
 {% extends 'workshop/base.html' %}
 
+{% block styles %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'workshop/css/index.css' %}">
+{% endblock styles %}
+
 {% block content %}
-    <h1>Home page</h1>
-    <div>
-        <blockquote>
-            Fashion is not necessarily about labels. It's not about brands. It's about something else that comes from within you.
-            <cite>– Ralph Lauren</cite>
-        </blockquote>
-        <blockquote>
-            Clothes aren't going to change the world, the women who wear them will.
-            <cite>– Anne Klein</cite>
-        </blockquote>
-    </div>
-    <div style="width: 100%; padding: 2em; display: flex; justify-content: space-between">
-        <img
-            style="width: 40%; margin: 1em"
-            src="https://mir-s3-cdn-cf.behance.net/project_modules/max_3840/7f3ffe86736007.5da2fd566315c.jpg"
-            alt="skylar"
-        />
-        <p>{{ text }}</p>
-    </div>
-    <div style="width: 100%; display: flex; flex-direction: column; align-items: center; ">
-        <h2>Latest news post</h2>
-        <div class="card" style="width: 30%; margin-top: 2em">
-        <div class="card-body">
-            <h5 class="card-title">{{ post.title }}</h5>
-            <a href="news/{{ post.slug }}">Learn more</a>
-            <hr>
-            {% if post.description %}
-                <p class="card-text">{{ post.description }}</p>
-            {% else %}
-                <p class="card-text">{{ post.content }}</p>
-            {% endif %}
+    <div class="index-container">
+        <div class="certificate">
+            <div class=backgroundImage >
+                <div class="content">
+                    <h1>Certificate of Achievement</h1>
+                    <p>This is to certify that</p>
+                    <h2>Your Name</h2>
+                    <p>has successfully completed the beginner course in Rukodelije</p>
+                    <p>
+                        on <span class=date>Thu, October 26, 2023</span>
+                    </p>
+                </div>
+            </div>
         </div>
-    </div>
-    </div>
-    <div style="margin-top: 2em; width: 100%; display: flex; justify-content: space-evenly; ">
-        <a href="https://meta.com"><img
-            src="https://1000logos.net/wp-content/uploads/2021/10/logo-Meta.png"
-            alt="meta logo"
-            style="height: 48px"
-        ></a>
-        <a href="https://apple.com"><img
-            src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg"
-            alt="apple logo"
-            style="height: 48px"
-        >
-        <a href="https://amazon.com"><img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Amazon_icon.svg/2500px-Amazon_icon.svg.png"
-            alt="amazon logo"
-            style="height: 48px"
-        >
-        <a href="https://google.com"><img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1200px-Google_%22G%22_Logo.svg.png"
-            alt="google logo"
-            style="width: 48px"
-        >
+        <div class="h1quotes">
+            <div class="h1container">
+                <h1 class="page-title">Home page</h1>
+            </div>
+            <div class="quotes">
+                <blockquote lang="en">
+                Fashion is not necessarily about labels. It's not about brands. It's about something else that comes from within you.
+<!--                <cite>– Ralph Lauren</cite>-->
+            </blockquote>
+            <blockquote lang="ru">
+                Clothes aren't going to change the world, the women who wear them will.
+<!--                <cite>– Anne Klein</cite>-->
+            </blockquote>
+            </div>
+        </div>
+        <div id="main-img-container">
+            <img
+                src="https://mir-s3-cdn-cf.behance.net/project_modules/max_3840/7f3ffe86736007.5da2fd566315c.jpg"
+                alt="skylar"
+            />
+            <p class="page-text">{{ text }}</p>
+        </div>
+        <div class="latest-post">
+            <h2 class="section-title">Latest news post</h2>
+            <div class="post-content">
+                <h3 class="post-title">{{ post.title }}</h3>
+                {% if post.description %}
+                    <p class="page-text">{{ post.description }}</p>
+                {% else %}
+                    <p class="page-text">{{ post.content }}</p>
+                {% endif %}
+                <a href="news/{{ post.slug }}">Learn more</a>
+            </div>
+        </div>
+        <div id="sponsors">
+            <a href="https://meta.com"><img
+                src="https://1000logos.net/wp-content/uploads/2021/10/logo-Meta.png"
+                alt="meta logo"
+            ></a>
+            <a href="https://apple.com"><img
+                src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg"
+                alt="apple logo"
+            ></a>
+            <a href="https://amazon.com"><img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Amazon_icon.svg/2500px-Amazon_icon.svg.png"
+                alt="amazon logo"
+            ></a>
+            <a href="https://google.com"><img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1200px-Google_%22G%22_Logo.svg.png"
+                alt="google logo"
+            ></a>
+        </div>
+        <a class="link" href="https://bsuir.by">Some link</a>
+        <section>
+              <div class="section-div left">1</div>
+              <div class="section-div left">2</div>
+              <div class="section-div right">3</div>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tristique
+                sapien ac erat tincidunt, sit amet dignissim lectus vulputate. Donec id
+                iaculis velit. Aliquam vel malesuada erat. Praesent non magna ac massa
+                aliquet tincidunt vel in massa. Phasellus feugiat est vel leo finibus
+                congue.
+              </p>
+        </section>
     </div>
 {% endblock content%}

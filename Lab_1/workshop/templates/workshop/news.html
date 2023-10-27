@@ -1,23 +1,30 @@
 {% extends 'workshop/base.html' %}
 
+{% block styles %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'workshop/css/news.css' %}">
+{% endblock styles %}
+
 {% block content %}
-    <div style="width: 30%; display:flex; flex-direction: row; justify-content: center; align-items: center">
-        <h1>{{ title }}</h1>
-    </div>
+    <h1 class="page-title">{{ title }}</h1>
     {% for s in object_list %}
-    <div class="card" style="width: 30%; margin-top: 2em">
-        <div class="card-body">
+    <div class="news">
+        <div class="news-post">
             {% if s.image %}
-                <img src="{{ s.image.url }}" style="height: 128px" alt="post image">
+                <img class="news-picture" src="{{ s.image.url }}">
             {% endif %}
-            <h5 class="card-title">{{ s.title }}</h5>
-            <a href="{{ s.slug }}">Learn more</a>
-            <hr>
-            {% if s.description %}
-                <p class="card-text">{{ s.description }}</p>
-            {% else %}
-                <p class="card-text">{{ s.content }}</p>
-            {% endif %}
+            <div class="info">
+                <h3>{{ s.title }}</h3>
+                <a href="{{ s.slug }}">Learn more</a>
+                <hr>
+                <div class="desc-container">
+                    {% if s.description %}
+                        <p class="page-text">{{ s.description }}</p>
+                    {% else %}
+                        <p class="page-text">{{ s.content }}</p>
+                    {% endif %}
+                </div>
+            </div>
         </div>
     </div>
     {% endfor %}

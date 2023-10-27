@@ -1,5 +1,10 @@
 {% extends 'workshop/base.html' %}
 
+{% block styles %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'workshop/css/experiments.css' %}">
+{% endblock styles %}
+
 {% block content %}
     <header>
          <h1>{{ title }}</h1>
@@ -138,26 +143,129 @@
         <table>
             <thead>
                 <tr>
-                    <th id="H1" headers="Header 1">2022 revenue</th>
-                    <th id="H2" headers="Header 2">2021 revenue</th>
-                    <th id="H3" headers="Header 3">2023 revenue</th>
+                    <th style="background: red" colspan="3" style="text-align:center;">Заголовок таблицы</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td headers="H1" style="background: green">147.000</td>
-                    <td headers="H2" style="background: yellow">128.000</td>
-                    <td headers="H3" style="background: blueviolet">190.000</td>
+                    <td headers="H1"></td>
+                    <td headers="H2">128.000</td>
+                    <td headers="H3"></td>
                 </tr>
                 <tr>
-                    <td headers="H1" style="background: cyan">154.000</td>
-                    <td headers="H3" style="background: khaki">162.000</td>
-                    <td rowspan="2" headers="H2" style="background: darkgoldenrod">163.000</td>
+                    <td headers="H1">154.000</td>
+                    <td headers="H3">162.000</td>
+                    <td rowspan="2" headers="H2">163.000</td>
                 </tr>
                 <tr>
-                    <td colspan="2" style="background: red" headers="H2">219.000</td>
+                    <td colspan="2" headers="H2">219.000</td>
                 </tr>
             </tbody>
         </table>
     </article>
+    <article class="ahuha">
+        <div class="gridContainer">
+        <div class="gridItem">
+          <p>A</p>
+        </div>
+        <div class="gridItem">
+          <p>B</p>
+        </div>
+        <div class="gridItem">
+          <p>C</p>
+        </div>
+        <div class="gridItem">
+          <p>D</p>
+        </div>
+        <div class="gridItem">
+          <p>E</p>
+        </div>
+        <div class="gridItem">
+          <p>F</p>
+        </div>
+      </div>
+      <div class="overflowDiv">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo labore
+        voluptatum fugit! Pariatur commodi illo, doloremque numquam ducimus
+        laudantium tempora, rerum laboriosam nulla quod, rem molestiae aperiam
+        possimus ipsum magni. Minima dolore facere dolores quo sed assumenda rem
+        optio dignissimos veritatis neque eum, officia perspiciatis cupiditate
+        fugiat blanditiis nostrum dicta nemo eveniet inventore quam accusantium.
+        Reprehenderit nostrum soluta corrupti sit. Consequuntur blanditiis aut
+        architecto quisquam earum assumenda illo! Vitae labore, deleniti
+        similique aut a recusandae ab doloremque iure ipsum officiis quam
+        incidunt, saepe beatae maiores porro vero necessitatibus cumque quas.
+        Cumque, aspernatur laborum placeat voluptatibus corrupti dolorum ratione
+        sint nemo quae ab blanditiis vero tempora! Consectetur sapiente quidem
+        quos omnis natus atque minus quas sint beatae. Ratione illum praesentium
+        ab? Hic quibusdam, aspernatur tempora nam adipisci eum odit esse enim
+        maxime quisquam voluptates ratione, molestiae consequuntur architecto
+        non veniam quasi quas possimus. Quisquam, id quod? Illum inventore error
+        pariatur quos. Quaerat sunt veritatis asperiores odit vel rem
+        consectetur consequuntur eaque esse, pariatur amet ut possimus ipsa
+        beatae, minus in exercitationem suscipit ea nulla accusantium libero?
+        Est dolore repudiandae aliquam eligendi. Totam corrupti hic aliquid,
+        earum officia similique, quo doloremque commodi, numquam mollitia
+        laboriosam quis libero velit vitae omnis? Beatae neque dolores quibusdam
+        eveniet assumenda sint enim praesentium fugit earum similique. Ullam,
+        nihil molestiae! Reiciendis, ex error? Amet tempore maiores nemo
+        excepturi minus maxime asperiores itaque dolor adipisci dicta, beatae
+        consectetur incidunt ipsum, voluptas qui tempora odio eligendi inventore
+        debitis saepe.
+      </div>
+      <div class=.multipleColumns>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo labore
+        voluptatum fugit! Pariatur commodi illo, doloremque numquam ducimus
+        laudantium tempora, rerum laboriosam nulla quod, rem molestiae aperiam
+        possimus ipsum magni. Minima dolore facere dolores quo sed assumenda rem
+        optio dignissimos veritatis neque eum, officia perspiciatis cupiditate
+        fugiat blanditiis nostrum dicta nemo eveniet inventore quam accusantium.
+        Reprehenderit nostrum soluta corrupti sit. Consequuntur blanditiis aut
+        architecto quisquam earum assumenda illo! Vitae labore, deleniti
+        similique aut a recusandae ab doloremque iure ipsum officiis quam
+        incidunt, saepe beatae maiores porro vero necessitatibus cumque quas.
+        Cumque, aspernatur laborum placeat voluptatibus corrupti dolorum ratione
+        sint nemo quae ab blanditiis vero tempora! Consectetur sapiente quidem
+        quos omnis natus atque minus quas sint beatae. Ratione illum praesentium
+        ab? Hic quibusdam, aspernatur tempora nam adipisci eum odit esse enim
+        maxime quisquam voluptates ratione, molestiae consequuntur architecto
+        non veniam quasi quas possimus. Quisquam, id quod? Illum inventore error
+        pariatur quos. Quaerat sunt veritatis asperiores odit vel rem
+        consectetur consequuntur eaque esse, pariatur amet ut possimus ipsa
+        beatae, minus in exercitationem suscipit ea nulla accusantium libero?
+        Est dolore repudiandae aliquam eligendi. Totam corrupti hic aliquid,
+        earum officia similique, quo doloremque commodi, numquam mollitia
+        laboriosam quis libero velit vitae omnis? Beatae neque dolores quibusdam
+        eveniet assumenda sint enim praesentium fugit earum similique. Ullam,
+        nihil molestiae! Reiciendis, ex error? Amet tempore maiores nemo
+        excepturi minus maxime asperiores itaque dolor adipisci dicta, beatae
+        consectetur incidunt ipsum, voluptas qui tempora odio eligendi inventore
+        debitis saepe.
+      </div>
+    </article>
+    <div style="column-count: 3; column-gap: 20px;">
+      <!-- Ваш HTML-код здесь -->
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo labore
+        voluptatum fugit! Pariatur commodi illo, doloremque numquam ducimus
+        laudantium tempora, rerum laboriosam nulla quod, rem molestiae aperiam
+        possimus ipsum magni. Minima dolore facere dolores quo sed assumenda rem
+        optio dignissimos veritatis neque eum, officia perspiciatis cupiditate
+        fugiat blanditiis nostrum dicta nemo eveniet inventore quam accusantium.
+        Reprehenderit nostrum soluta corrupti sit.</p>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo labore
+        voluptatum fugit! Pariatur commodi illo, doloremque numquam ducimus
+        laudantium tempora, rerum laboriosam nulla quod, rem molestiae aperiam
+        possimus ipsum magni. Minima dolore facere dolores quo sed assumenda rem
+        optio dignissimos veritatis neque eum, officia perspiciatis cupiditate
+        fugiat blanditiis nostrum dicta nemo eveniet inventore quam accusantium.
+        Reprehenderit nostrum soluta corrupti sit.</p>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo labore
+        voluptatum fugit! Pariatur commodi illo, doloremque numquam ducimus
+        laudantium tempora, rerum laboriosam nulla quod, rem molestiae aperiam
+        possimus ipsum magni. Minima dolore facere dolores quo sed assumenda rem
+        optio dignissimos veritatis neque eum, officia perspiciatis cupiditate
+        fugiat blanditiis nostrum dicta nemo eveniet inventore quam accusantium.
+        Reprehenderit nostrum soluta corrupti sit.</p>
+
+    </div>
 {% endblock content%}

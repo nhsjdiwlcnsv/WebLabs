@@ -21,9 +21,13 @@ from django.conf.urls.static import static
 
 from workshop.views import page_not_found
 
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('workshop.urls')),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns = (
+    [
+        path("admin/", admin.site.urls),
+        path("", include("workshop.urls")),
+    ]
+    + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+)
 
 handler404 = page_not_found

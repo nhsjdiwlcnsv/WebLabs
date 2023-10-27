@@ -1,0 +1,42 @@
+.sup-info {
+    color: #666666;
+    font-size: .9em;
+}
+
+p {
+  hyphens: auto; /* Включает автоматический перенос слов */
+  word-wrap: break-word; /* Разрывает длинные слова */
+  word-spacing: .25em; /* Устанавливает интервал между словами в 2px */
+  letter-spacing: .125em;
+  line-height: 1.5;
+  text-indent: 2em;
+}
+
+p:nth-of-type(2) {
+  text-transform: uppercase;
+}
+
+p::first-letter {
+  font-size: 150%;
+}
+
+p::first-line {
+  font-weight: bold;
+}
+
+p::before {
+    color: #570808;
+    content: "Text beginning: ";
+    font-weight: bold;
+}
+
+p::after {
+    color: #570808;
+    content: "Text end.";
+    font-style: italic;
+}
+
+p::selection {
+    background: darkblue;
+    color: #ddffdd;
+}

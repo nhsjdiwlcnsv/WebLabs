@@ -1,70 +1,67 @@
 {% extends 'workshop/base.html' %}
 
+{% block styles %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'workshop/css/contact.css' %}">
+{% endblock styles %}
+
 {% block content %}
-    <h1>Contact us</h1>
-    <div style="display: flex">
+    <h1 class="page-title">Contact us</h1>
+    <div>
         <iframe
         width="110"
         height="200"
         src="https://www.myinstants.com/instant/vine-boom-sound-70972/embed/"
-        style="transform:scale(0.1);opacity:0.1;outline:0;"
         ></iframe>
         <iframe
             width="110"
             height="200"
             src="https://www.myinstants.com/instant/goofy-ahh-sounds-96639/embed/"
-            style="transform:scale(0.1);opacity:0.1;outline:0;"
         ></iframe>
         <iframe
             width="110"
             height="200"
             src="https://www.myinstants.com/instant/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-38020/embed/"
-            style="transform:scale(0.1);opacity:0.1;outline:0;"
         ></iframe>
     </div>
-    <div style="
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-evenly"
-    >
-        <div class="card" style="width: 100%; margin: 1em">
-            <div class="card-body">
+    <div class="employees">
+        <div class="employee-card">
+            <div>
                 <img
                     alt="MS"
                     src="https://static.wikia.nocookie.net/amogus/images/c/cb/Susremaster.png/revision/latest?cb=20210806124552"
                     width="100"
                 >
-                <h5 class="card-title">Mikhail Shkarubski</h5>
-                <p class="card-text">Specializes on footwear.</p>
-                <p class="card-text">+375 29 956-7008</p>
-                <p class="card-text">mikhailshkarubski@gmail.com</p>
+                <h3>Mikhail Shkarubski</h3>
+                <p>Specializes on footwear.</p>
+                <p>+375 29 956-7008</p>
+                <p>mikhailshkarubski@gmail.com</p>
             </div>
         </div>
-        <div class="card" style="width: 100%; margin: 1em">
-            <div class="card-body">
+        <div class="employee-card">
+            <div>
                 <img
                     alt="AM"
                     src="https://static.wikia.nocookie.net/amogus/images/7/73/Ultimatesus.png/revision/latest?cb=20210916171704"
                     width="100"
                 >
-                <h5 class="card-title">Am'Oga</h5>
-                <p class="card-text">Specializes on clothes.</p>
-                <p class="card-text">+375 29 708-9568</p>
-                <p class="card-text">amoga@gmail.com</p>
+                <h3>Am'Oga</h3>
+                <p>Specializes on clothes.</p>
+                <p>+375 29 708-9568</p>
+                <p>amoga@gmail.com</p>
             </div>
         </div>
-        <div class="card" style="width: 100%; margin: 1em">
-            <div class="card-body">
+        <div class="employee-card">
+            <div>
                 <img
                     alt="AH"
                     src="https://static.wikia.nocookie.net/amogus/images/7/73/Ultimatesus.png/revision/latest?cb=20210916171704"
                     width="100"
                 >
-                <h5 class="card-title">Ah'Uha</h5>
-                <p class="card-text">Specializes on accessories/furniture.</p>
-                <p class="card-text">+375 29 008-7956</p>
-                <p class="card-text">ahuha@gmail.com</p>
+                <h3>Ah'Uha</h3>
+                <p>Specializes on accessories/furniture.</p>
+                <p>+375 29 008-7956</p>
+                <p>ahuha@gmail.com</p>
             </div>
         </div>
     </div>

@@ -5,11 +5,11 @@
     <form method="post">
         {% csrf_token %}
         {% for field in form %}
-            <div class="input-group mb-3">
+            <div>
                 {{ field }}
             </div>
             <div>{{ field.errors }}</div>
         {% endfor %}
-        <button type="submit" class="btn btn-primary">Add</button>
+        <button type="submit">Add</button>
     </form>
 {% endblock content%}
