@@ -6,7 +6,6 @@
         {% load static %}
         <link rel="stylesheet" href="{% static 'workshop/css/base.css' %}">
         {% block styles %}
-
         {% endblock styles %}
     </head>
     <body>
@@ -47,5 +46,8 @@
 
             {% endblock content%}
         </div>
+
+        {% block scripts %}
+        {% endblock scripts %}
     </body>
 </html>

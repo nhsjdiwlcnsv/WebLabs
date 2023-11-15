@@ -84,15 +84,20 @@
     color: #3875d7;
 }
 
-#main-img-container {
+#banner-container {
     width: 100%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
 }
 
-#main-img-container img, p {
-    width: 80%;
+#banner-container img, p {
+    width: 30%;
+}
+
+.banner-image {
+    animation: spin 2s ease infinite;/* Применяем анимацию "bounce" */
 }
 
 .latest-post {
@@ -187,4 +192,22 @@ section {
 
 .link:visited {
     color: red;!important;
+}
+
+@keyframes spin {
+  0%, 100% {
+    /*transform: translate(0, 0);*/
+    transform: rotate(0);
+  }
+  25% {
+    transform: translate(90px, 0);
+  }
+  50% {
+    /*transform: translate(30px, 30px);*/
+    transform: rotate(180deg);
+  }
+  75% {
+    /*transform: translate(0px, 30px);*/
+    transform: rotate(-270deg);
+  }
 }
