@@ -17,6 +17,11 @@
             src="https://www.youtube.com/embed/YRL4uIVzVWI">
         </iframe>
     </div>
+    <div class="scroll-container">
+        <div id="welcome-text-container"><h2 id="welcome-text">Welcome to Rukodelije!</h2></div>
+        <img src="{% static 'workshop/images/scroll/boot.webp' %}" id="boot" alt="boot" />
+        <img src="{% static 'workshop/images/scroll/string.webp' %}" id="string" alt="string" />
+    </div>
     <div>
         <h2>History of the workshop</h2>
         <hr>
@@ -51,3 +56,7 @@
         >
     </div>
 {% endblock content%}
+
+{% block scripts %}
+    <script src="{% static 'workshop/js/scrollAnimation.js' %}"></script>
+{% endblock scripts %}
