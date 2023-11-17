@@ -1,4 +1,5 @@
 from django.urls import path
+from django.views.generic import TemplateView
 
 from workshop.views import (
     ServicesView,
@@ -45,5 +46,10 @@ urlpatterns = [
     path("order/", CreateOrderView.as_view(), name="order"),
     path("my-order/<int:order_id>", OrderView.as_view(), name="my-order"),
     path("my-orders/", OrdersView.as_view(), name="my-orders"),
+    path(
+        "matrix/",
+        TemplateView.as_view(template_name="workshop/matrix.html"),
+        name="matrix",
+    ),
     path("apis/", apis, name="apis"),
 ]
