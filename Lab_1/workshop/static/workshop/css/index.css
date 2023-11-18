@@ -211,3 +211,10 @@ section {
     transform: rotate(-270deg);
   }
 }
+
+#timer
+{
+    font-family: VT323, sans-serif;
+    font-size: 3em;
+    color: red;
+}
