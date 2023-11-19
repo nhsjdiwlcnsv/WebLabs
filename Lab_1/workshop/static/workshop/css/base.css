@@ -108,3 +108,13 @@ h1 h2 h3 h4 h5[class$="title"] {
     font-size: 3em;
     color: #3875d7;
 }
+
+footer {
+    padding: 2em 0 2em 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}

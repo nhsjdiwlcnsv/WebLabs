@@ -47,6 +47,27 @@
             {% endblock content%}
         </div>
 
+        <footer>
+            <form id="styleForm">
+                <div id="fontSizeContainer">
+                    <label for="fontSizeCheckbox">Change Font Size</label>
+                    <input type="checkbox" id="fontSizeCheckbox">
+                </div>
+
+                <div id="textColorContainer">
+                    <label for="textColorCheckbox">Change Text Color</label>
+                    <input type="checkbox" id="textColorCheckbox">
+                </div>
+
+                <div id="bgColorContainer">
+                    <label for="bgColorCheckbox">Change Background Color</label>
+                    <input type="checkbox" id="bgColorCheckbox">
+                </div>
+            </form>
+        </footer>
+
+        {% load static %}
+        <script src="{% static 'workshop/js/restyle.js' %}"></script>
         {% block scripts %}
         {% endblock scripts %}
     </body>
