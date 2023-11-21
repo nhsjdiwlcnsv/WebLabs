@@ -8,6 +8,7 @@ from .models import (
     Person,
     Banner,
     BannerRotationInterval,
+    Voucher,
 )
 
 
@@ -34,6 +35,18 @@ class BannerRotationIntervalAdmin(admin.ModelAdmin):
     list_display = ("interval_seconds",)
 
 
+class VoucherAdmin(admin.ModelAdmin):
+    list_display = (
+        "title",
+        "code",
+        "discount",
+        "start_date",
+        "end_date",
+        "max_usages",
+        "usage_count",
+    )
+
+
 admin.site.register(Question)
 admin.site.register(ServiceType, ServiceTypeAdmin)
 admin.site.register(Service, ServiceAdmin)
@@ -42,3 +55,4 @@ admin.site.register(Person)
 admin.site.register(Order)
 admin.site.register(Banner, BannerAdmin)
 admin.site.register(BannerRotationInterval, BannerRotationIntervalAdmin)
+admin.site.register(Voucher, VoucherAdmin)

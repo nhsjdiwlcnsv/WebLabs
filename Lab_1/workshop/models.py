@@ -1,10 +1,9 @@
-from django.db import models
-
 # Create your models here.
 from django.contrib.auth.models import AbstractUser
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 from django.urls import reverse
+from django.utils import timezone
 
 
 class Person(AbstractUser):
@@ -112,3 +111,29 @@ class BannerRotationInterval(models.Model):
 
     def __str__(self):
         return f"{self.interval_seconds} s"
+
+
+class Voucher(models.Model):
+    title = models.TextField()
+    code = models.CharField(max_length=20, unique=True)
+    discount = models.DecimalField(max_digits=5, decimal_places=2)
+
+    start_date = models.DateTimeField()
+    end_date = models.DateTimeField()
+
+    max_usages = models.PositiveIntegerField()
+    usage_count = models.PositiveIntegerField(default=0)
+
+    def is_valid(self) -> bool:
+        return (
+            self.start_date <= timezone.now() <= self.end_date
+            and self.usage_count < self.max_usages
+        )
+
+    def apply(self):
+        if self.is_valid():
+            self.usage_count += 1
+            self.save()
+
+    def __str__(self):
+        return self.code

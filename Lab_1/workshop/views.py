@@ -3,9 +3,10 @@ import json
 import requests
 from django.contrib.auth import login
 from django.contrib.auth.views import LoginView, LogoutView
-from django.http import HttpResponseNotFound
+from django.http import HttpResponseNotFound, JsonResponse
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
+from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import (
     TemplateView,
     ListView,
@@ -24,6 +25,7 @@ from .models import (
     Person,
     Banner,
     BannerRotationInterval,
+    Voucher,
 )
 from .utils import DataMixin
 
@@ -258,6 +260,18 @@ class OrderView(DataMixin, DetailView):
         }
 
 
+class PriceCalculator(DataMixin, TemplateView):
+    template_name = "workshop/calculator.html"
+
+    def get_context_data(self, **kwargs):
+        return {
+            **super().get_context_data(**kwargs),
+            **self.get_context(title="Price calculator"),
+            "vouchers": Voucher.objects.all(),
+            "services": Service.objects.all(),
+        }
+
+
 def apis(request):
     context = {
         "title": "APIs",
@@ -274,3 +288,34 @@ def page_not_found(request, exception):
         "<div style='display: flex; justify-content: center; align-items:center'><h1>404, "
         "friendo...🫠</h1></div>"
     )
+
+
+@csrf_exempt
+def apply_voucher(request):
+    if request.method == "POST":
+        data = json.loads(request.body.decode("utf-8"))
+        print(data)
+
+        voucher_code = data.get("voucher")
+        service_title = data.get("service")
+
+        voucher = Voucher.objects.filter(code=voucher_code).first()
+        service = Service.objects.filter(title=service_title).first()
+
+        if voucher and voucher.is_valid():
+            old_price = service.price
+            new_price = round(service.price * (1 - float(voucher.discount) / 100), 2)
+
+            data = {
+                "success": True,
+                "newPrice": new_price,
+                "oldPrice": old_price,
+                "voucherTitle": voucher.title,
+            }
+        else:
+            data = {
+                "success": False,
+                "message": "Voucher is invalid!",
+            }
+
+        return JsonResponse(data)

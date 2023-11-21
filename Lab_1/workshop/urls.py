@@ -21,6 +21,8 @@ from workshop.views import (
     OrdersView,
     OrderView,
     apis,
+    PriceCalculator,
+    apply_voucher,
 )
 
 urlpatterns = [
@@ -51,5 +53,7 @@ urlpatterns = [
         TemplateView.as_view(template_name="workshop/matrix.html"),
         name="matrix",
     ),
+    path("calculator/", PriceCalculator.as_view(), name="calculator"),
+    path("apply-voucher/", apply_voucher, name="apply-voucher"),
     path("apis/", apis, name="apis"),
 ]

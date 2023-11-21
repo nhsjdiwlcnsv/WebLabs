@@ -1,0 +1,45 @@
+{% extends 'workshop/base.html' %}
+
+{% block styles %}
+{% load static %}
+{#<link rel="stylesheet" href="{% static 'workshop/css/index.css' %}">#}
+{% endblock styles %}
+
+{% block content %}
+    <div class="form-container">
+        <form method="post">
+            {% csrf_token %}
+
+            <label for="service-input">Select a service</label>
+            <input type="text" name="service" list="services" id="service-input">
+            <datalist id="services">
+                {% for service in services %}
+                	<option value="{{ service.title }}"></option>
+                {% endfor %}
+            </datalist>
+
+            <label for="voucher-input">Select a voucher</label>
+            <input type="text" name="voucher" list="vouchers" id="voucher-input">
+            <datalist id="vouchers">
+                {% for voucher in vouchers %}
+                	<option value="{{ voucher.code }}"></option>
+                {% endfor %}
+            </datalist>
+
+            <button type="submit" id="apply-voucher">Apply voucher</button>
+        </form>
+
+        <h2 style="color: darkorange">New price is</h2>
+        <p id="new-price"></p>
+
+        <h2 style="color: darkorange">Old price was</h2>
+        <p id="old-price"></p>
+
+        <h2 style="color: darkorange">You have applied the following voucher: </h2>
+        <p id="voucher-name"></p>
+    </div>
+{% endblock content%}
+
+{% block scripts %}
+    <script src="{% static 'workshop/js/applyVoucher.js' %}"></script>
+{% endblock scripts %}
