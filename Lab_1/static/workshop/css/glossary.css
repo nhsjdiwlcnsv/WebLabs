@@ -1,0 +1,11 @@
+.list .listItem:first-child {
+  background-color: tomato;
+}
+
+.list .listItem:last-child {
+  background-color: blueviolet;
+}
+
+.list .listItem:nth-child(3) {
+  background-color: peru;
+}

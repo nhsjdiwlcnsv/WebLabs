@@ -1,0 +1,29 @@
+{% extends 'workshop/base.html' %}
+
+{% block styles %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'workshop/css/register.css' %}">
+{% endblock styles %}
+
+{% block content %}
+    <h1 class="page-title">{{ title }}</h1>
+    <form class="form" method="post">
+        {% csrf_token %}
+        {% for field in form %}
+            <div>
+                {% if field.label == 'Username' %}
+                    <span>@</span>
+                {% endif %}
+                {{ field }}
+                {% if field.label == 'Email' %}
+                    <span>@example.com</span>
+                {% endif %}
+            </div>
+            <div>
+                {{ field.errors }}
+            </div>
+        {% endfor %}
+        <div>{{ form.non_field_errors }}</div>
+        <button type="submit">Log in</button>
+    </form>
+{% endblock content%}

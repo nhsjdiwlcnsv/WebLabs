@@ -1,0 +1,15 @@
+{% extends 'workshop/base.html' %}
+
+{% block content %}
+    <h1>Create an order</h1>
+    <form method="post">
+        {% csrf_token %}
+        {% for field in form %}
+            <div>
+                {{ field }}
+            </div>
+            <div>{{ field.errors }}</div>
+        {% endfor %}
+        <button type="submit">Order</button>
+    </form>
+{% endblock content%}

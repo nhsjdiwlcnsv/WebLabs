@@ -1,0 +1,14 @@
+{% extends 'workshop/base.html' %}
+
+{% block content %}
+    <h1>{{ title }}</h1>
+    {% for o in object_list %}
+    <div>
+        <div>
+            <h5>{{ o.service }}</h5>
+            <p>{{ o.content }}</p>
+            <p>{{ o.pieces }}</p>
+        </div>
+    </div>
+    {% endfor %}
+{% endblock content %}

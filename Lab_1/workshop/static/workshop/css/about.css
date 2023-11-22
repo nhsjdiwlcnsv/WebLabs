@@ -1,0 +1,49 @@
+.company-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2em;
+}
+
+.company-name {
+    font-size: 4em;
+    color: #e35f5f;
+    font-family: "PP Fragment Serif", serif;
+    font-kerning: none;
+}
+
+.logo {
+    transform: skewY(60deg) skewX(-60deg) skew(60deg);
+}
+
+.scroll-container {
+    position: relative;
+    padding: 2em;
+    height: 40em;
+    overflow: hidden;
+    border-radius: 2em;
+}
+
+#boot {
+    position: relative;
+    height: 640px;
+    left: 0;
+}
+
+#string {
+    position: relative;
+    height: 640px;
+    left: 0;
+}
+
+#welcome-text-container {
+    position: absolute;
+    width: 60%;
+}
+
+#welcome-text {
+    color: #f64a00;
+    font-size: 8em;
+    font-family: PP Fragment Glare, serif;
+    line-height: 1em;
+}

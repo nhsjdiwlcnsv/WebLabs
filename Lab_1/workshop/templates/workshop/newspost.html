@@ -1,0 +1,20 @@
+{% extends 'workshop/base.html' %}
+
+{% block styles %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'workshop/css/newspost.css' %}">
+{% endblock styles %}
+
+{% block content %}
+    {% if object.image %}
+        <figure>
+            <img width="256" src="{{ object.image.url }}">
+        </figure>
+    {% endif %}
+    <h2 class="section-title">{{ object.title }}</h2>
+    <div style="display: flex; gap: 2em">
+        <p class="sup-info">{{ object.created_at }}</p>
+        <p class="sup-info">{{ object.updated_at }}</p>
+    </div>
+    <p class="large-text">{{ object.content }}</p>
+{% endblock content %}

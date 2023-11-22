@@ -1,0 +1,275 @@
+{% extends 'workshop/base.html' %}
+
+{% block styles %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'workshop/css/experiments.css' %}">
+{% endblock styles %}
+
+{% block content %}
+    <header>
+         <h1>{{ title }}</h1>
+    </header>
+    <article>
+        <h2>Code listing example</h2>
+        <p>This is an example of code listing using tags.</p>
+        <pre>
+            <code>
+                class RSNADataset(Dataset):
+                    SPLIT_SEED: int = 14
+                    TEST_SIZE: float = 0.25
+                    MRI_DEPTH: int = 64
+
+                    def __init__(
+                            self,
+                            root: str | os.PathLike,
+                            data: pd.DataFrame,
+                            mri_type: str,
+                            train: bool = True,
+                            cache_to_ram: bool = True,
+                            transform = None,
+                    ):
+                        super().__init__()
+
+                        self._root = root
+                        self._data = data
+                        self.mri_type = mri_type
+                        self.train = train
+                        self.cache_to_ram = cache_to_ram
+                        self._transform = transform
+
+                        X, y = self._data.iloc[:, 0], self._data.iloc[:, 1]
+                        train_samples, test_samples, train_labels, test_labels = train_test_split(
+                            X, y,
+                            test_size=self.TEST_SIZE,
+                            random_state=self.SPLIT_SEED,
+                            stratify=y,
+                        )
+
+                        if train:
+                            self._samples = train_samples.reset_index(drop=True)
+                            self._labels = train_labels.reset_index(drop=True)
+                        else:
+                            self._samples = test_samples.reset_index(drop=True)
+                            self._labels = test_labels.reset_index(drop=True)
+
+                        if not cache_to_ram:
+                            return
+
+                        self._cached_data = []
+
+                        for sample, label in tqdm(
+                            zip(self._samples, self._labels),
+                            total=len(self._samples),
+                            desc='Caching data into memory'
+                        ):
+                            self._cached_data += [(self.fetch_dicom_3d(sample), label)]
+
+                    def __getitem__(self, index: int) -> tuple:
+                        if self.cache_to_ram:
+                            scan = self._cached_data[index][0]
+                            label = self._cached_data[index][1]
+                        else:
+                            scan = self.fetch_dicom_3d(self._samples.iloc[index])
+                            label = self._labels.iloc[index]
+
+                        return scan, label
+
+                    def __len__(self) -> int:
+                        return len(self._samples)
+
+                    @staticmethod
+                    def _validate_path(path: str) -> None:
+                        if not os.path.lexists(path):
+                            raise FileNotFoundError(f'File {path} doesn\'t exist!')
+
+                    def _pathify(self, user_id: int, mri_type: str | None = None):
+                        """Completes id and replaces it with a path. If MRI type is present,
+                        adds it to the path.
+                        """
+                        return os.path.join(self._root, str(user_id).zfill(5), mri_type)
+
+                    def _fetch_from_path(self, path: str) -> torch.Tensor:
+                        self._validate_path(path)
+
+                        img = pdcm.dcmread(path).pixel_array.astype(dtype=np.float32)
+
+                        return self._transform(img) if self._transform else torch.tensor(img)
+
+                    def fetch_dicom_3d(self, user_id: int) -> torch.Tensor:
+                        """Fetches an array of DICOM slices and returns its Scan3D instance.
+
+                        :param user_id: id of the user whose DICOM scan is to be fetched
+                        :return: ndarray of shape (1, MRI_DEPTH, HEIGHT, WIDTH)
+                        """
+                        path: str = f"{self._pathify(user_id, self.mri_type)}"
+
+                        files: list = sorted(
+                            glob.glob(os.path.join(path, "*.dcm")),
+                            key=lambda f: int(re.search("Image-(\d+)", f).group(1))
+                        )
+
+                        middle: int = len(files) // 2
+                        bottom: int = max(0, middle - self.MRI_DEPTH // 2)
+                        top: int = min(len(files), middle + self.MRI_DEPTH // 2)
+
+                        scan = torch.vstack([self._fetch_from_path(f) for f in files[bottom:top]])
+
+                        if len(scan) < self.MRI_DEPTH:
+                            pad_depth: int = self.MRI_DEPTH - len(scan)
+                            bottom_pad: int = pad_depth // 2
+                            top_pad: int = pad_depth - bottom_pad
+
+                            scan = torch.vstack([
+                                torch.zeros(bottom_pad, *scan.shape[-2:]),
+                                scan,
+                                torch.zeros(top_pad, *scan.shape[-2:])
+                            ])
+
+                        scan = torch.unsqueeze(scan, dim=0)
+
+                        return scan
+            </code>
+         </pre>
+    </article>
+    <article>
+        <h2>Примеры аббревиатур</h2>
+        <abbr title="Hyper Text Markup Language">HTML</abbr>
+        <abbr title="Коммунистическая партия советского союза">КПСС</abbr>
+        <abbr title="Всесоюзный ленинский коммунистический союз молодежи">ВЛКСМ</abbr>
+        <abbr title="Cascading style sheets">CSS</abbr>
+    </article>
+    <article>
+        <h2>Пример использования таблицы</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th style="background: red" colspan="3" style="text-align:center;">Заголовок таблицы</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td headers="H1"></td>
+                    <td headers="H2">128.000</td>
+                    <td headers="H3"></td>
+                </tr>
+                <tr>
+                    <td headers="H1">154.000</td>
+                    <td headers="H3">162.000</td>
+                    <td rowspan="2" headers="H2">163.000</td>
+                </tr>
+                <tr>
+                    <td colspan="2" headers="H2">219.000</td>
+                </tr>
+            </tbody>
+        </table>
+    </article>
+    <article class="ahuha">
+        <div class="gridContainer">
+        <div class="gridItem">
+          <p>A</p>
+        </div>
+        <div class="gridItem">
+          <p>B</p>
+        </div>
+        <div class="gridItem">
+          <p>C</p>
+        </div>
+        <div class="gridItem">
+          <p>D</p>
+        </div>
+        <div class="gridItem">
+          <p>E</p>
+        </div>
+        <div class="gridItem">
+          <p>F</p>
+        </div>
+      </div>
+      <div class="overflowDiv">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo labore
+        voluptatum fugit! Pariatur commodi illo, doloremque numquam ducimus
+        laudantium tempora, rerum laboriosam nulla quod, rem molestiae aperiam
+        possimus ipsum magni. Minima dolore facere dolores quo sed assumenda rem
+        optio dignissimos veritatis neque eum, officia perspiciatis cupiditate
+        fugiat blanditiis nostrum dicta nemo eveniet inventore quam accusantium.
+        Reprehenderit nostrum soluta corrupti sit. Consequuntur blanditiis aut
+        architecto quisquam earum assumenda illo! Vitae labore, deleniti
+        similique aut a recusandae ab doloremque iure ipsum officiis quam
+        incidunt, saepe beatae maiores porro vero necessitatibus cumque quas.
+        Cumque, aspernatur laborum placeat voluptatibus corrupti dolorum ratione
+        sint nemo quae ab blanditiis vero tempora! Consectetur sapiente quidem
+        quos omnis natus atque minus quas sint beatae. Ratione illum praesentium
+        ab? Hic quibusdam, aspernatur tempora nam adipisci eum odit esse enim
+        maxime quisquam voluptates ratione, molestiae consequuntur architecto
+        non veniam quasi quas possimus. Quisquam, id quod? Illum inventore error
+        pariatur quos. Quaerat sunt veritatis asperiores odit vel rem
+        consectetur consequuntur eaque esse, pariatur amet ut possimus ipsa
+        beatae, minus in exercitationem suscipit ea nulla accusantium libero?
+        Est dolore repudiandae aliquam eligendi. Totam corrupti hic aliquid,
+        earum officia similique, quo doloremque commodi, numquam mollitia
+        laboriosam quis libero velit vitae omnis? Beatae neque dolores quibusdam
+        eveniet assumenda sint enim praesentium fugit earum similique. Ullam,
+        nihil molestiae! Reiciendis, ex error? Amet tempore maiores nemo
+        excepturi minus maxime asperiores itaque dolor adipisci dicta, beatae
+        consectetur incidunt ipsum, voluptas qui tempora odio eligendi inventore
+        debitis saepe.
+      </div>
+      <div class=.multipleColumns>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo labore
+        voluptatum fugit! Pariatur commodi illo, doloremque numquam ducimus
+        laudantium tempora, rerum laboriosam nulla quod, rem molestiae aperiam
+        possimus ipsum magni. Minima dolore facere dolores quo sed assumenda rem
+        optio dignissimos veritatis neque eum, officia perspiciatis cupiditate
+        fugiat blanditiis nostrum dicta nemo eveniet inventore quam accusantium.
+        Reprehenderit nostrum soluta corrupti sit. Consequuntur blanditiis aut
+        architecto quisquam earum assumenda illo! Vitae labore, deleniti
+        similique aut a recusandae ab doloremque iure ipsum officiis quam
+        incidunt, saepe beatae maiores porro vero necessitatibus cumque quas.
+        Cumque, aspernatur laborum placeat voluptatibus corrupti dolorum ratione
+        sint nemo quae ab blanditiis vero tempora! Consectetur sapiente quidem
+        quos omnis natus atque minus quas sint beatae. Ratione illum praesentium
+        ab? Hic quibusdam, aspernatur tempora nam adipisci eum odit esse enim
+        maxime quisquam voluptates ratione, molestiae consequuntur architecto
+        non veniam quasi quas possimus. Quisquam, id quod? Illum inventore error
+        pariatur quos. Quaerat sunt veritatis asperiores odit vel rem
+        consectetur consequuntur eaque esse, pariatur amet ut possimus ipsa
+        beatae, minus in exercitationem suscipit ea nulla accusantium libero?
+        Est dolore repudiandae aliquam eligendi. Totam corrupti hic aliquid,
+        earum officia similique, quo doloremque commodi, numquam mollitia
+        laboriosam quis libero velit vitae omnis? Beatae neque dolores quibusdam
+        eveniet assumenda sint enim praesentium fugit earum similique. Ullam,
+        nihil molestiae! Reiciendis, ex error? Amet tempore maiores nemo
+        excepturi minus maxime asperiores itaque dolor adipisci dicta, beatae
+        consectetur incidunt ipsum, voluptas qui tempora odio eligendi inventore
+        debitis saepe.
+      </div>
+    </article>
+    <div style="column-count: 3; column-gap: 20px;">
+      <!-- Ваш HTML-код здесь -->
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo labore
+        voluptatum fugit! Pariatur commodi illo, doloremque numquam ducimus
+        laudantium tempora, rerum laboriosam nulla quod, rem molestiae aperiam
+        possimus ipsum magni. Minima dolore facere dolores quo sed assumenda rem
+        optio dignissimos veritatis neque eum, officia perspiciatis cupiditate
+        fugiat blanditiis nostrum dicta nemo eveniet inventore quam accusantium.
+        Reprehenderit nostrum soluta corrupti sit.</p>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo labore
+        voluptatum fugit! Pariatur commodi illo, doloremque numquam ducimus
+        laudantium tempora, rerum laboriosam nulla quod, rem molestiae aperiam
+        possimus ipsum magni. Minima dolore facere dolores quo sed assumenda rem
+        optio dignissimos veritatis neque eum, officia perspiciatis cupiditate
+        fugiat blanditiis nostrum dicta nemo eveniet inventore quam accusantium.
+        Reprehenderit nostrum soluta corrupti sit.</p>
+      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo labore
+        voluptatum fugit! Pariatur commodi illo, doloremque numquam ducimus
+        laudantium tempora, rerum laboriosam nulla quod, rem molestiae aperiam
+        possimus ipsum magni. Minima dolore facere dolores quo sed assumenda rem
+        optio dignissimos veritatis neque eum, officia perspiciatis cupiditate
+        fugiat blanditiis nostrum dicta nemo eveniet inventore quam accusantium.
+        Reprehenderit nostrum soluta corrupti sit.</p>
+
+    </div>
+{% endblock content%}
+
+{% block scripts %}
+    <script src="{% static 'workshop/js/classes.js' %}"></script>
+{% endblock scripts %}

@@ -1,0 +1,20 @@
+.employees {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4em;
+}
+
+.employee-card {
+    padding: 1em;
+    width: 40%;
+    border-radius: 2em;
+    border: 4px solid #e35f5f;
+    background: #ffffff;
+    color: #000;
+}
+
+.employee-card h3 {
+    font-kerning: revert;
+    font-weight: 800;
+}

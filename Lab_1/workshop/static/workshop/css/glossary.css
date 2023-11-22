@@ -1,0 +1,28 @@
+.list {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.list .listItem {
+  padding-left: 1em;
+  text-indent: -1em;
+}
+
+.listItem:before {
+  content: "+";
+  padding-right: 5px;
+}
+
+
+.list .listItem:first-child {
+  background-color: tomato;
+}
+
+.list .listItem:last-child {
+  background-color: blueviolet;
+}
+
+.list .listItem:nth-child(3) {
+  background-color: peru;
+}

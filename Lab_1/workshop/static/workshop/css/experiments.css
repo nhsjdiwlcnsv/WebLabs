@@ -1,0 +1,91 @@
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 столбца */
+  grid-gap: 2em; /* Расстояние между элементами */
+}
+
+.gridItem {
+  background-color: #ddffdd;
+  color: #000;
+  padding: 20px;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 2px 2px 5px 0 #000;
+}
+
+/* Перенос элементов на новую строку после 4-го элемента */
+.gridItem:nth-child(n + 5) {
+  grid-column: span 4; /* Занимает все 4 столбца */
+}
+
+/* Опциональные стили для элементов */
+.gridItem:nth-child(odd) {
+  background-color: #9da1ae;
+}
+
+.gridItem:nth-child(even) {
+  animation: pulse 10s infinite;
+}
+
+.gridItem:nth-child(odd):hover {
+  animation: pulse 2s infinite;
+  /* background-color: #676a75; */
+}
+
+.gridItem p {
+  font-kerning: auto;
+  font-weight: bold;
+  color: #000;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+td {
+  border: 1px solid white;
+}
+
+td:empty {
+  background: #570808;
+  text-align: center;
+  vertical-align: middle;
+}
+
+td:not(:empty) {
+  background: #00363a;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(.5);
+  }
+  33% {
+    transform: rotate(10deg);
+  }
+
+  50% {
+    transform: rotate(-10deg);
+  }
+
+  66% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.overflowDiv {
+  width: 50%;
+  border: 1px solid blue;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  height: 3rem;
+}
+
+.multipleColumns {
+  column-count: 5;
+  column-width: 20px;
+}

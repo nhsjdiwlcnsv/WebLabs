@@ -1,0 +1,18 @@
+{% extends 'workshop/base.html' %}
+
+{% block content %}
+    {% if image %}
+        <img src="{{ image.url }}" alt="{{ s.title }} image">
+    {% endif %}
+    <h1>{{ service_type.title }}</h1>
+    {% for s in object_list %}
+    <div>
+        <div>
+            <h5>{{ s.title }}</h5>
+            <p>{{ s.description }}</p>
+            <p>${{ s.price }}</p>
+            <a href="{{ s.get_absolute_url }}">Learn more</a>
+        </div>
+    </div>
+    {% endfor %}
+{% endblock content %}

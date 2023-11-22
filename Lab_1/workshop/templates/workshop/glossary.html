@@ -1,0 +1,32 @@
+{% extends 'workshop/base.html' %}
+
+{% block styles %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'workshop/css/glossary.css' %}">
+{% endblock styles %}
+
+{% block content %}
+    <h1>Glossary</h1>
+    <ul class="list">
+        {% for s in object_list %}
+            <li class="listItem">
+                <details>
+                    <div>
+                        <small>{{ s.created_at }}</small>
+                        <p>{{ s.answer }}</p>
+                    </div>
+                    <summary><h3>{{ s.question }}</h3></summary>
+                </details>
+            </li>
+            <li class="listItem">
+                <details>
+                    <div>
+                        <small>{{ s.created_at }}</small>
+                        <p>{{ s.answer }}</p>
+                    </div>
+                    <summary><h3>{{ s.question }}</h3></summary>
+                </details>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock content%}

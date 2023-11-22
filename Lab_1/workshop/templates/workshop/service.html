@@ -1,0 +1,10 @@
+{% extends 'workshop/base.html' %}
+
+{% block content %}
+    <h1>{{ object.title }}</h1>
+    <h3>Type: {{ object.service_type }}</h3>
+    <p>{{ object.description }}</p>
+    <p>Price: {{ object.price }}</p>
+    <p>Created: {{ object.created_at }}</p>
+    <p>Updated: {{ object.updated_at }}</p>
+{% endblock content %}
