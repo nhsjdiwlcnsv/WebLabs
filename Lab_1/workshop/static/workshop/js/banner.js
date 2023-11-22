@@ -16,7 +16,7 @@ window.addEventListener('blur', stopRotation);
 function rotateBanner()
 {
     for (let i = 0; i < banners.length; i++)
-        banners[i].hidden = i !== currentBanner;
+        banners[i].hidden = banners[i] !== currentBanner;
 
     currentBanner++;
 
