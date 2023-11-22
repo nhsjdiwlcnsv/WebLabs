@@ -260,7 +260,7 @@ class OrderView(DataMixin, DetailView):
         }
 
 
-class PriceCalculator(DataMixin, TemplateView):
+class PriceCalculatorView(DataMixin, TemplateView):
     template_name = "workshop/calculator.html"
 
     def get_context_data(self, **kwargs):
@@ -269,6 +269,16 @@ class PriceCalculator(DataMixin, TemplateView):
             **self.get_context(title="Price calculator"),
             "vouchers": Voucher.objects.all(),
             "services": Service.objects.all(),
+        }
+
+
+class TaskView(DataMixin, TemplateView):
+    template_name = "workshop/task.html"
+
+    def get_context_data(self, **kwargs):
+        return {
+            **super().get_context_data(**kwargs),
+            **self.get_context(title="Custom assignment"),
         }
 
 

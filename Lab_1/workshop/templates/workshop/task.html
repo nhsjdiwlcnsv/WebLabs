@@ -1,0 +1,20 @@
+{% extends 'workshop/base.html' %}
+
+{% block content %}
+    <div>
+        <h2>Поиск однофамильцев</h2>
+
+        <form id="passengerForm">
+            <label for="lastName">Введите фамилию пассажира:</label>
+            <input type="text" id="lastName" name="lastName" required>
+            <button type="button" onclick="searchPassengers()">Поиск</button>
+        </form>
+
+        <div id="result"></div>
+    </div>
+{% endblock content %}
+
+{% load static %}
+{% block scripts %}
+    <script src="{% static 'workshop/js/task.js' %}"></script>
+{% endblock scripts %}
