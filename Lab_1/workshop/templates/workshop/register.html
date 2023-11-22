@@ -18,8 +18,10 @@
             </div>
             <div>{{ field.errors }}</div>
         {% endfor %}
+        <label>Birth Day:</label></td>
+        <input type="date" id="age" required>
         <div class="form-button">
-            <button type="submit">Sign up</button>
+            <button type="submit" id="submit-button">Sign up</button>
             <p>Or if you already have an account <a href="{% url 'login' %}">Log in</a></p>
         </div>
         <input disabled placeholder="Disabled input example">
@@ -28,3 +30,7 @@
         <input type="range" class="range">
     </form>
 {% endblock content%}
+
+{% block scripts %}
+    <script src="{% static 'workshop/js/ageValidation.js' %}"></script>
+{% endblock scripts %}

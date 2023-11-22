@@ -3,14 +3,26 @@
     flex-direction: column;
     align-items: center;
     gap: 4em;
+    perspective: 500em;
 }
 
 .employee-card {
+    --posx: 50%;
+    --posy: 50%;
+    --rotateX: 0;
+    --rotateY: 0;
+
+    transform:
+    perspective(10em)
+    translatez(0em)
+    rotateY(var(--rotateX))
+    rotateX(var(--rotateY));
+
     padding: 1em;
     width: 40%;
     border-radius: 2em;
     border: 4px solid #e35f5f;
-    background: #ffffff;
+    background: #ffffff var(--posx) var(--posy);
     color: #000;
 }
 

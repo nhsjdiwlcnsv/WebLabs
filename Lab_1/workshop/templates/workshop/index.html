@@ -7,6 +7,7 @@
 
 {% block content %}
     <div class="index-container">
+        <div id="timer"></div>
         <div class="certificate">
             <div class=backgroundImage >
                 <div class="content">
@@ -20,6 +21,7 @@
                 </div>
             </div>
         </div>
+        <p class="page-text">{{ text }}</p>
         <div class="h1quotes">
             <div class="h1container">
                 <h1 class="page-title">Home page</h1>
@@ -35,13 +37,23 @@
             </blockquote>
             </div>
         </div>
-        <div id="main-img-container">
-            <img
-                src="https://mir-s3-cdn-cf.behance.net/project_modules/max_3840/7f3ffe86736007.5da2fd566315c.jpg"
-                alt="skylar"
-            />
-            <p class="page-text">{{ text }}</p>
-        </div>
+        <div id="banner-container" data-interval="{{ banner_interval }}" >
+        {% if banners %}
+            {% for banner in banners %}
+             <div class="banner"
+                  {% if not forloop.first %}
+                    hidden
+                  {% endif %}
+             >
+                 <a href="{{ banner.link }}" target="_blank">
+                     <img class="banner-image" src="{{ banner.image.url }}" alt="{{ banner.title }}">
+                 </a>
+             </div>
+            {% endfor %}
+        {% else %}
+            <p>No banners available.</p>
+        {% endif %}
+    </div>
         <div class="latest-post">
             <h2 class="section-title">Latest news post</h2>
             <div class="post-content">
@@ -87,3 +99,8 @@
         </section>
     </div>
 {% endblock content%}
+
+{% block scripts %}
+    <script src="{% static 'workshop/js/banner.js' %}"></script>
+    <script src="{% static 'workshop/js/timer.js' %}"></script>
+{% endblock scripts %}
